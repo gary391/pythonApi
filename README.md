@@ -1,7 +1,10 @@
 #### How to activate the activate virtual environment
 
 ```
+python3 -m venv venv 
 source venv/bin/activate
+
+python -c "import sys; print(sys.prefix)"
 
 ```
 #### main is the name of the file and app is the application. 
@@ -10,7 +13,7 @@ source venv/bin/activate
 - only used in the dev. 
 
 ```
-uvicorn main:app --reload
+uvicorn app.main:app --reload
 ```
 
 #### Get vs Post request 
@@ -51,3 +54,27 @@ Update (PUT/PATCH)---> /posts/:id  ---> @app.put("/posts/{id}")
 Delete ---> /posts/:id  ---> @app.delet("/posts/{id}")
 
 ```
+
+#### What is a database?
+- Database is a collection of organized data that can be easily accessed and managed.
+- DBMS
+  - We don't work or interact with databases directly
+  - Instead we make use of a software referred to as a Database management System (DBMS)
+  
+#### Type of DB
+- Relational 
+  - mysql 
+  - postgresql
+  - oracle
+  - sql server
+- Non Relational
+  - MangoDB
+  - DynamoDB
+  - Oracle 
+  - SQL server
+
+#### Postgres 
+
+- By default every Postgres installation comes with one database already created called "postgres"
+- This is important because Postgres requires you to specify the name of a database to make 
+  connection. So there needs to always be one database.

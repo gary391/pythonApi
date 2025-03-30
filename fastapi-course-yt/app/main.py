@@ -111,3 +111,13 @@ def delete_post(id: int):
     # When you are deleting any data, you don't send any data back.
     # Instead you just send the status_code. 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+@app.put("/posts/{id}")
+def update_post(id: int, post: Post): # This will allow the request to come in with the right schema
+    index = find_index_post(id) # Where is the post in the list of posts 
+    if index is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=f"post with id: {id} does not exist")
+    post_dict = post.dict() # get the data from the put request coming in from the front end and convert into a dictionary
+    post_dict['id'] = id 
+    my_posts[index] = post_dict
+    return {"data": post_dict}
